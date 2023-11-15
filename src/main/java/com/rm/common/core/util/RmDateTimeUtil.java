@@ -191,7 +191,8 @@ public class RmDateTimeUtil {
     private static LocalDateTime createLocalDateTime(ZoneId zone, String input) {
         LocalDate date = null;
         boolean hasDate = true;
-
+        //input에 Z가 붙어있다면 지워야함
+        input = input.replaceAll("Z$", "");
         // 먼저 일반적인 형식 (21-04-26, 2021.06.08 등)의 날짜를 검색
         // 이후 없다면 심플 형식(940826, 19921105 등)의 날짜를 검색
         Matcher dateMatcher = getDatePattern().matcher(input);
